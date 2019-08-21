@@ -40,6 +40,8 @@
     <EmbeddedResource Include="Data\SteinsGateZero\PrivateUseCharacters.tbl" />
     <EmbeddedResource Include="Data\SteinsGateHD\Charset.utf8" />
     <EmbeddedResource Include="Data\SteinsGateHD\PrivateUseCharacters.tbl" />
+    <EmbeddedResource Include="Data\SteinsGateELITE\Charset.utf8" />
+    <EmbeddedResource Include="Data\SteinsGateELITE\PrivateUseCharacters.tbl" />
     <None Include="project.json" />
     <None Include="Schemas\InstructionStubs.xsd">
       <SubType>Designer</SubType>
@@ -109,6 +111,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Data\SteinsGateHD\SupportedModules.lst" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\SteinsGateELITE\InstructionStubs.xml" />
+    <EmbeddedResource Include="Data\SteinsGateELITE\MarkupTagCodes.xml" />
+    <EmbeddedResource Include="Data\SteinsGateELITE\SupportedModules.lst" />
   </ItemGroup>
   <Import Project="..\SciAdvNet.Common\SciAdvNet.Common.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

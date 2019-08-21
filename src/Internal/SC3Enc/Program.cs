@@ -17,13 +17,14 @@ namespace SC3Enc
 
         private void Run(string[] args)
         {
-            if (args.Length != 1)
-            {
-                Console.WriteLine("Insufficient arguments.");
-                Environment.Exit(0);
-            }
+            //if (args.Length != 1)
+            //{
+            //    Console.WriteLine("Insufficient arguments.");
+            //    Environment.Exit(0);
+            //}
 
-            string inputFileName = args[0];
+            //string inputFileName = args[0];
+            string inputFileName = "d:/sg00_01.scx.txt";
             WriteStringTable(inputFileName);
         }
 
@@ -50,7 +51,7 @@ namespace SC3Enc
                     try
                     {
                         sc3String = deserializer.Deserialize(s);
-                        bytes = sc3String.Encode(SC3Game.SteinsGateHD);
+                        bytes = sc3String.Encode(SC3Game.SteinsGateELITE);
                     }
                     catch
                     {

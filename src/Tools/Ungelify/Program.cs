@@ -13,7 +13,7 @@ namespace Ungelify
         private IArchive _currentArchive;
         private string _currentArchiveName;
         private string _currentOutputDir;
-
+        
         public Program()
         {
             _commands = new Dictionary<string, Action<string[]>>()

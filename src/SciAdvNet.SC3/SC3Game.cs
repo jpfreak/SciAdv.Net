@@ -3,6 +3,7 @@
     public enum SC3Game
     {
         SteinsGateZero,
-        SteinsGateHD
+        SteinsGateHD,
+        SteinsGateELITE
     }
 }
