@@ -49,6 +49,7 @@ namespace SciAdvNet.SC3.Tests
                     {
                         var text = modTextFile.ReadLine();
 
+                        Debug.WriteLine(stringHandle.Resolve());
                         Debug.WriteLine(text);
 
                         module.UpdateString(stringHandle.Id, SC3String.Deserialize(text));
@@ -56,7 +57,7 @@ namespace SciAdvNet.SC3.Tests
 
                     module.ApplyPendingUpdates();
 
-                    using (var fileStream2 = File.Create("D:/out/" + entry.FullName))
+                    using (var fileStream2 = File.Create("C:/Users/mike/Desktop/script_orig/" + entry.FullName))
                     {
                         fileStream.Seek(0, SeekOrigin.Begin);
                         fileStream.CopyTo(fileStream2);
@@ -67,6 +68,31 @@ namespace SciAdvNet.SC3.Tests
             }
         }
 
+
+        [Fact]
+        public void SaveScripts()
+        {
+            var archive = ZipFile.OpenRead("Data/SteinsGateELITE.zip");
+
+            foreach (var entry in archive.Entries)
+            {
+                using (var fileStream = OpenScript(entry))
+                {
+                    SC3Module module = SC3Module.Load(fileStream);
+
+                    Debug.WriteLine("#### " + entry.FullName);
+
+                    var modTextFile = new StreamWriter("C:/dev/sg_kor_proj/sge-script/orig/" + entry.FullName + ".txt");
+
+                    foreach (var stringHandle in module.StringTable)
+                    {
+                        modTextFile.WriteLine(stringHandle.Resolve());
+                    }
+
+                    modTextFile.Close();
+                }
+            }
+        }
 
         private Stream OpenScript(ZipArchiveEntry entry)
         {
