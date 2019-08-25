@@ -1,8 +1,10 @@
 ﻿{
   "dependencies": {
-    "xunit": "2.1.0",
-    "xunit.runner.visualstudio": "2.1.0",
-    "System.Collections.Immutable": "1.2.0"
+    "System.Collections.Immutable": "1.5.0",
+    "System.IO.Compression": "4.3.0",
+    "System.IO.Compression.ZipFile": "4.3.0",
+    "xunit": "2.4.1",
+    "xunit.runner.visualstudio": "2.4.1"
   },
   "frameworks": {
     "net461": {}

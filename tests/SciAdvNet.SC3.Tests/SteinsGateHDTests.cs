@@ -39,11 +39,19 @@ namespace SciAdvNet.SC3.Tests
             {
                 using (var fileStream = OpenScript(entry))
                 {
-                    SC3Module module = SC3Module.Load(fileStream);
+                    SC3Module module = null;
+
+                    try {
+                        module = SC3Module.Load(fileStream);
+                    } catch {
+                        Debug.WriteLine("#### open file Error : " + entry.FullName);
+
+                        continue;
+                    }
 
                     Debug.WriteLine("#### " + entry.FullName);
 
-                    var modTextFile = new StreamReader("C:/dev/sg_kor_proj/sge-script/" + entry.FullName + ".txt");
+                    var modTextFile = new StreamReader("D:/dev/sge-script/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
@@ -57,7 +65,7 @@ namespace SciAdvNet.SC3.Tests
 
                     module.ApplyPendingUpdates();
 
-                    using (var fileStream2 = File.Create("C:/Users/mike/Desktop/script_orig/" + entry.FullName))
+                    using (var fileStream2 = File.Create("C:/Users/jpkim/Desktop/script_orig/" + entry.FullName))
                     {
                         fileStream.Seek(0, SeekOrigin.Begin);
                         fileStream.CopyTo(fileStream2);
@@ -78,15 +86,26 @@ namespace SciAdvNet.SC3.Tests
             {
                 using (var fileStream = OpenScript(entry))
                 {
-                    SC3Module module = SC3Module.Load(fileStream);
+                    SC3Module module = null;
 
-                    Debug.WriteLine("#### " + entry.FullName);
+                    try {
+                        module = SC3Module.Load(fileStream);
+                    } catch {
+                        Debug.WriteLine("#### open file Error : " + entry.FullName);
 
-                    var modTextFile = new StreamWriter("C:/dev/sg_kor_proj/sge-script/orig/" + entry.FullName + ".txt");
+                        continue;
+                    }
+
+                    var modTextFile = new StreamWriter("C:/Users/jpkim/Desktop/extractTest/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
-                        modTextFile.WriteLine(stringHandle.Resolve());
+                        try {
+                            modTextFile.WriteLine(stringHandle.Resolve());
+                        } catch {
+                            Debug.WriteLine("#### write error File : " + entry.FullName);
+                            break;
+                        }
                     }
 
                     modTextFile.Close();
