@@ -128,6 +128,8 @@ namespace SciAdvNet.SC3.Text
         {
             switch (tag.Name.ToLowerInvariant())
             {
+                case "%n":
+                    return new Marker(MarkerKind.LineSeperator);
                 case "name":
                     return new Marker(MarkerKind.CharacterName);
                 case "line":
