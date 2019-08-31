@@ -27,6 +27,7 @@ namespace SciAdvNet.SC3.Text
         {
             private static readonly Dictionary<MarkerKind, byte> s_markers = new Dictionary<MarkerKind, byte>()
             {
+                [MarkerKind.LineSeperator] = StringSegmentCodes.LineBreak,
                 [MarkerKind.CharacterName] = StringSegmentCodes.CharacterName,
                 [MarkerKind.DialogueLine] = StringSegmentCodes.DialogueLine,
                 [MarkerKind.RubyBase] = StringSegmentCodes.RubyBase,

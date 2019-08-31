@@ -75,6 +75,10 @@ namespace SciAdvNet.SC3.Text
             byte peek = scanner.PeekByte();
             switch (peek)
             {
+                case StringSegmentCodes.LineBreak:
+                    scanner.Advance();
+                    return new Marker(MarkerKind.LineSeperator);
+
                 case StringSegmentCodes.CharacterName:
                     scanner.Advance();
                     return new Marker(MarkerKind.CharacterName);
@@ -159,7 +163,7 @@ namespace SciAdvNet.SC3.Text
                 else if (peek == StringSegmentCodes.LineBreak)
                 {
                     scanner.Advance();
-                    sb.Append("\n");
+                    sb.Append("[%n]");
                 }
                 else
                 {

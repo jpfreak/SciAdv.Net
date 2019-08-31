@@ -185,6 +185,7 @@ namespace SciAdvNet.SC3.Text
 
     public enum MarkerKind
     {
+        LineSeperator,
         CharacterName,
         DialogueLine,
         RubyBase,
