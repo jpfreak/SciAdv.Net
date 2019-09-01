@@ -64,6 +64,7 @@ namespace SciAdvNet.SC3.Text
                     int index = Charset.IndexOf(c.ToString(), StringComparison.Ordinal);
                     if (index == -1)
                     {
+                        Debug.WriteLine("## missingChar : " + c);
                         //Debugger.Break();
                     }
 

@@ -132,7 +132,6 @@ namespace SciAdvNet.SC3
         {
             string strHeader = BinaryUtils.BytesToHexString(headerBytes);
             var supportedGames = GameSpecificData.SupportedGames;
-            Debug.WriteLine("## " + strHeader);
             return supportedGames.Single(game => GameSpecificData.For(game).SupportedModules.Contains(strHeader));
         } 
 
