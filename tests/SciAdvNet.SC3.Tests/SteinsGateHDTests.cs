@@ -51,21 +51,24 @@ namespace SciAdvNet.SC3.Tests
 
                     Debug.WriteLine("#### " + entry.FullName);
 
-                    var modTextFile = new StreamReader("D:/dev/sge-script/" + entry.FullName + ".txt");
+                    var modTextFile = new StreamReader("C:/dev/sg_kor_proj/sge-script/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
                         var text = modTextFile.ReadLine();
 
-                        Debug.WriteLine(stringHandle.Resolve());
-                        Debug.WriteLine(text);
+                        //Debug.WriteLine(stringHandle.Resolve());
+                        //Debug.WriteLine(text);
 
-                        module.UpdateString(stringHandle.Id, SC3String.Deserialize(text));
+                        if (text != null)
+                        {
+                            module.UpdateString(stringHandle.Id, SC3String.Deserialize(text));
+                        }
                     }
 
                     module.ApplyPendingUpdates();
 
-                    using (var fileStream2 = File.Create("C:/Users/jpkim/Desktop/script_orig/" + entry.FullName))
+                    using (var fileStream2 = File.Create("C:/Users/mike/Desktop/script_orig/" + entry.FullName))
                     {
                         fileStream.Seek(0, SeekOrigin.Begin);
                         fileStream.CopyTo(fileStream2);
@@ -96,20 +99,49 @@ namespace SciAdvNet.SC3.Tests
                         continue;
                     }
 
-                    var modTextFile = new StreamWriter("C:/Users/jpkim/Desktop/extractTest/" + entry.FullName + ".txt");
+                    var modTextFile = new StreamWriter("C:/Users/mike/Desktop/extractTest/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
-                        try {
-                            modTextFile.WriteLine(stringHandle.Resolve());
-                        } catch {
-                            Debug.WriteLine("#### write error File : " + entry.FullName);
-                            break;
-                        }
+                        modTextFile.WriteLine(stringHandle);
                     }
 
                     modTextFile.Close();
                 }
+            }
+        }
+
+        [Fact]
+        public void ApplyMailTextModify()
+        {
+            using (var fileStream = OpenScript(File.Open("C:/Users/mike/Desktop/SteinsGateELITE/_mail.scx", FileMode.Open)))
+            {
+                SC3Module module = SC3Module.Load(fileStream);
+
+                var modTextFile = new StreamReader("C:/dev/sg_kor_proj/sge-script/_mail.scx.txt");
+
+                foreach (var stringHandle in module.StringTable)
+                {
+                    var text = modTextFile.ReadLine();
+
+                    //Debug.WriteLine(stringHandle.Resolve());
+                    //Debug.WriteLine(text);
+
+                    if (text != null)
+                    {
+                        module.UpdateString(stringHandle.Id, SC3String.Deserialize("aa"));
+                    }
+                }
+
+                module.ApplyPendingUpdates();
+
+                using (var fileStream2 = File.Create("C:/Users/mike/Desktop/extractTest/_mail.scx"))
+                {
+                    fileStream.Seek(0, SeekOrigin.Begin);
+                    fileStream.CopyTo(fileStream2);
+                }
+
+                modTextFile.Close();
             }
         }
 
@@ -122,6 +154,14 @@ namespace SciAdvNet.SC3.Tests
                 seekable.Position = 0;
                 return seekable;
             }
+        }
+
+        private Stream OpenScript(FileStream stream)
+        {
+            var seekable = new MemoryStream((int)stream.Length);
+            stream.CopyTo(seekable);
+            seekable.Position = 0;
+            return seekable;
         }
     }
 }
