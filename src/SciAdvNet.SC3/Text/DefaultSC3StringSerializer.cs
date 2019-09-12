@@ -24,7 +24,8 @@ namespace SciAdvNet.SC3.Text
                 [MarkerKind.DialogueLine] = "[line]",
                 [MarkerKind.RubyBase] = "[rubyBase]",
                 [MarkerKind.RubyTextStart] = "[rubyTextStart]",
-                [MarkerKind.RubyTextEnd] = "[rubyTextEnd]"
+                [MarkerKind.RubyTextEnd] = "[rubyTextEnd]",
+                [MarkerKind.NameAndCode] = "[and]"
             };
 
             private TextWriter _writer;

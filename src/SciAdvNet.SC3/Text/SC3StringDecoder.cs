@@ -99,6 +99,10 @@ namespace SciAdvNet.SC3.Text
                     scanner.Advance();
                     return new Marker(MarkerKind.RubyTextEnd);
 
+                case StringSegmentCodes.NameAndCode:
+                    scanner.Advance();
+                    return new Marker(MarkerKind.NameAndCode);
+
                 case StringSegmentCodes.SetColor:
                     scanner.Advance();
                     var colorIndex = SC3ExpressionParser.ParseExpression(scanner.Reader);

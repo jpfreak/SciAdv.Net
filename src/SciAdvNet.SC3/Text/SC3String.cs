@@ -190,7 +190,8 @@ namespace SciAdvNet.SC3.Text
         DialogueLine,
         RubyBase,
         RubyTextStart,
-        RubyTextEnd
+        RubyTextEnd,
+        NameAndCode
     }
 
     public abstract class EmbeddedCommand : SC3StringSegment

@@ -32,7 +32,8 @@ namespace SciAdvNet.SC3.Text
                 [MarkerKind.DialogueLine] = StringSegmentCodes.DialogueLine,
                 [MarkerKind.RubyBase] = StringSegmentCodes.RubyBase,
                 [MarkerKind.RubyTextStart] = StringSegmentCodes.RubyTextStart,
-                [MarkerKind.RubyTextEnd] = StringSegmentCodes.RubyTextEnd
+                [MarkerKind.RubyTextEnd] = StringSegmentCodes.RubyTextEnd,
+                [MarkerKind.NameAndCode] = StringSegmentCodes.NameAndCode
             };
 
             private ImmutableArray<byte>.Builder _builder;

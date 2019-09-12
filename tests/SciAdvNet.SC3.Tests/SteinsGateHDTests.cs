@@ -103,7 +103,7 @@ namespace SciAdvNet.SC3.Tests
 
                     foreach (var stringHandle in module.StringTable)
                     {
-                        modTextFile.WriteLine(stringHandle);
+                        modTextFile.WriteLine(stringHandle.Resolve());
                     }
 
                     modTextFile.Close();

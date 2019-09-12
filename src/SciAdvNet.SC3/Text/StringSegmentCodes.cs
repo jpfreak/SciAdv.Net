@@ -12,6 +12,7 @@
         public const byte RubyTextStart = 0x0A;
         public const byte RubyTextEnd = 0x0B;
         public const byte SetFontSize = 0x0C;
+        public const byte NameAndCode = 0x0E;
         public const byte SetAlignment_Center = 0x0F;
         public const byte SetTopMargin = 0x11;
         public const byte SetLeftMargin = 0x12;
