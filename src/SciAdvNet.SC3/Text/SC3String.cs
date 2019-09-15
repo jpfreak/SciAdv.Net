@@ -191,7 +191,8 @@ namespace SciAdvNet.SC3.Text
         RubyBase,
         RubyTextStart,
         RubyTextEnd,
-        NameAndCode
+        NameAndCode,
+        TempMarker
     }
 
     public abstract class EmbeddedCommand : SC3StringSegment

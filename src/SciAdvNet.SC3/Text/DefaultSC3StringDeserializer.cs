@@ -142,6 +142,8 @@ namespace SciAdvNet.SC3.Text
                     return new Marker(MarkerKind.RubyTextEnd);
                 case "and":
                     return new Marker(MarkerKind.NameAndCode);
+                case "temp":
+                    return new Marker(MarkerKind.TempMarker);
 
                 default:
                     throw new InvalidDataException();

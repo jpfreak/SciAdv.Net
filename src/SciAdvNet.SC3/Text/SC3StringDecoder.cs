@@ -103,6 +103,10 @@ namespace SciAdvNet.SC3.Text
                     scanner.Advance();
                     return new Marker(MarkerKind.NameAndCode);
 
+                case StringSegmentCodes.TempMarker:
+                    scanner.Advance();
+                    return new Marker(MarkerKind.TempMarker);
+
                 case StringSegmentCodes.SetColor:
                     scanner.Advance();
                     var colorIndex = SC3ExpressionParser.ParseExpression(scanner.Reader);
@@ -164,11 +168,11 @@ namespace SciAdvNet.SC3.Text
                 {
                     NextCharacter(scanner, sb);
                 }
-                else if (peek == StringSegmentCodes.LineBreak)
-                {
-                    scanner.Advance();
-                    sb.Append("[%n]");
-                }
+                //else if (peek == StringSegmentCodes.LineBreak)
+                //{
+                //    scanner.Advance();
+                //    sb.Append("[%n]");
+                //}
                 else
                 {
                     break;

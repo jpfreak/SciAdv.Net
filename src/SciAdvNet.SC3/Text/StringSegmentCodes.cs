@@ -17,6 +17,7 @@
         public const byte SetTopMargin = 0x11;
         public const byte SetLeftMargin = 0x12;
         public const byte EvaluateExpression = 0x15;
+        public const byte TempMarker = 0x18;
 
         public const byte StringTerminator = 0xFF;
     }

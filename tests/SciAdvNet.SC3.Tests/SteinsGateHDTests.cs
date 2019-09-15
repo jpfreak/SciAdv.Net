@@ -51,14 +51,14 @@ namespace SciAdvNet.SC3.Tests
 
                     Debug.WriteLine("#### " + entry.FullName);
 
-                    var modTextFile = new StreamReader("C:/dev/sg_kor_proj/sge-script/" + entry.FullName + ".txt");
+                    var modTextFile = new StreamReader("D:/dev/sge-script/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
                         var text = modTextFile.ReadLine();
 
-                        //Debug.WriteLine(stringHandle.Resolve());
-                        //Debug.WriteLine(text);
+                        //Debug.WriteLine("orig : " + stringHandle.Resolve());
+                        //Debug.WriteLine("targ : " + text);
 
                         if (text != null)
                         {
@@ -68,7 +68,7 @@ namespace SciAdvNet.SC3.Tests
 
                     module.ApplyPendingUpdates();
 
-                    using (var fileStream2 = File.Create("C:/Users/mike/Desktop/script_orig/" + entry.FullName))
+                    using (var fileStream2 = File.Create("C:/Users/jpkim/Desktop/script_orig/" + entry.FullName))
                     {
                         fileStream.Seek(0, SeekOrigin.Begin);
                         fileStream.CopyTo(fileStream2);
@@ -99,7 +99,7 @@ namespace SciAdvNet.SC3.Tests
                         continue;
                     }
 
-                    var modTextFile = new StreamWriter("C:/Users/mike/Desktop/extractTest/" + entry.FullName + ".txt");
+                    var modTextFile = new StreamWriter("C:/Users/jpkim/Desktop/extractTest/" + entry.FullName + ".txt");
 
                     foreach (var stringHandle in module.StringTable)
                     {
